@@ -10,7 +10,7 @@ Rules:
 - Two full candy jars were displayed: Small - 17 candies and Big - 48 candies.
 - Each student had one guess for each jar (Total 2 guesses max).
 - Correct guesses or closest ones were rewared.
-  - Students got 50 stars if their guess was from 14-20 for the small jar and/or 45-51 for the big jar (Range of 3).
+  - Students got 50 stars if their guess was from 14-20 for the small jar and/or 45-51 for the big jar.
     - If not, 10 stars for each wrong guess.
   - Students got another 50 stars if they guessed exactly 17 for the small jar and/or 48 for the big jar.
   
