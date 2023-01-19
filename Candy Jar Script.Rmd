@@ -1,0 +1,66 @@
+---
+title: "Candy Jar Result Testing"
+output: html_notebook
+---
+```{r}
+# Read the result sheet
+candyjar = read.csv("Candy Data.csv")
+candyjar
+```
+```{r}
+# Range of 3: A student will get 50 stars if their guess is from 14-20 for the small jar or/and 45-51 for the big jar
+Swin3 = ifelse(test=(candyjar$Small < 21 & candyjar$Small > 13), yes=50, no=10)
+small.win3 = candyjar[candyjar$Swin3==50, "Small"]
+small.lose3 = candyjar[candyjar$Swin3==10, "Small"]
+candyjar$Swin3 = Swin3
+
+Bwin3 = ifelse(test=(candyjar$Big < 52 & candyjar$Big > 44), yes=50, no=10)
+big.win3 = candyjar[candyjar$Bwin3==50, "Big"]
+big.lose3 = candyjar[candyjar$Bwin3==10, "Big"]
+candyjar$Bwin3 = Bwin3
+
+# Winners: A student will get another 50 stars if they get exactly 17 for the small jara or/and 48 for the big jar
+Swin = ifelse(test=(candyjar$Small < 18 & candyjar$Small > 16), yes=50, no=0)
+small.win = candyjar[candyjar$Swin==50, "Small"]
+small.lose = candyjar[candyjar$Swin==0, "Small"]
+candyjar$Swin = Swin
+
+Bwin = ifelse(test=(candyjar$Big < 49 & candyjar$Big > 47), yes=50, no=0)
+big.win = candyjar[candyjar$Bwin==50, "Big"]
+big.lose = candyjar[candyjar$Bwin==0, "Big"]
+candyjar$Bwin = Bwin
+
+
+# The raw result data would look like
+candyjar
+``` 
+```{r}
+# Converting non-numeric variables into numeric values
+total = cbind(Swin3, Bwin3, Swin, Bwin)
+x = as.numeric(total)
+result = is.numeric(x)
+result
+```
+```{r}
+# The final results with the total number of stars a student will get
+Name = candyjar$Student.s.Name
+Small= candyjar$Small
+Big= candyjar$Big
+result.data = data.frame(Name, Small, Big, Swin3, Bwin3, Swin, Bwin, Stars = rowSums(total))
+result.data
+
+```
+```{r}
+Stars = result.data$Stars
+result = data.frame(Name, Small, Big, Stars)
+result
+```
+```{r}
+write.csv(result.data, "Candy Jar Final Result.csv")
+```
+
+
+
+
+
+
