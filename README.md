@@ -1,4 +1,4 @@
-# Candy-Jar-Project-2021-
+# Candy Jar Project (2021)
 My first personal/self-taught project using R/RStudio
 
 CANDY JAR EVENT - Mathnasium @Home - 2021 (by Kara Nguyen)
